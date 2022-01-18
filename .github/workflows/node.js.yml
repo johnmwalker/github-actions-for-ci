@@ -31,16 +31,15 @@ jobs:
     needs: build
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
     - uses: actions/download-artifact@main
-      with:
+      with: 
         name: webpack artifacts
         path: public
-    - name: npm install, and test
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, and test
+    - name: install and test
       run: |
         npm install
         npm test
