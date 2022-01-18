@@ -23,12 +23,12 @@ jobs:
           name: webpack artifacts
           path: public/
   test:
-    runs-on:
-      strategy:
-        matrix:
-          os: [ubuntu-latest, windows-2016]
-          node-version: [12.x, 14.x]
     needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-2016]
+        node-version: [12.x, 14.x]
     steps:
     - uses: actions/checkout@v2
     - uses: actions/download-artifact@main
